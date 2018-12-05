@@ -3,7 +3,7 @@ package by.epam.training.java.assanoooovi4k.model.entity;
 import java.util.Objects;
 
 public class Point {
-    public static final double DEFAULT_COORDINATE = 0;
+    private static final double DEFAULT_COORDINATE = 1;
 
     private double x;
     private double y;
@@ -40,17 +40,20 @@ public class Point {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Point)) return false;
-        Point point = (Point) o;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Point point = (Point) obj;
+
         return Double.compare(point.getX(), getX()) == 0 &&
                 Double.compare(point.getY(), getY()) == 0;
     }
 
     @Override
     public int hashCode() {
-
         return Objects.hash(getX(), getY());
     }
 
