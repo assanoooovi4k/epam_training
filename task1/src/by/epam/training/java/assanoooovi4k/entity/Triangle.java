@@ -1,34 +1,26 @@
-package by.epam.training.java.assanoooovi4k.model.entity;
+package by.epam.training.java.assanoooovi4k.entity;
 
-import by.epam.training.java.assanoooovi4k.model.util.IdUtil;
+import by.epam.training.java.assanoooovi4k.generator.IdGenerator;
 
 import java.util.Objects;
 
 public class Triangle {
-    private static final Point DEFAULT_POINT1 = new Point(0, 0);
-    private static final Point DEFAULT_POINT2 = new Point(2, 2);
-    private static final Point DEFAULT_POINT3 = new Point(5, 0);
+    private long triangleId;
 
-    private int id;
     private Point point1;
     private Point point2;
     private Point point3;
 
     public Triangle() {
-        this.id = IdUtil.id++;
-        this.point1 = DEFAULT_POINT1;
-        this.point2 = DEFAULT_POINT2;
-        this.point3 = DEFAULT_POINT3;
+        this.triangleId = IdGenerator.generateId();
     }
 
     public Triangle(Point point1, Point point2, Point point3) {
         if (isPointsOnLine(point1, point2, point3)) {
-            point1 = DEFAULT_POINT1;
-            point2 = DEFAULT_POINT2;
-            point3 = DEFAULT_POINT3;
+            //exception
         }
 
-        this.id = IdUtil.id++;
+        this.triangleId = IdGenerator.generateId();
         this.point1 = point1;
         this.point2 = point2;
         this.point3 = point3;
@@ -44,8 +36,8 @@ public class Triangle {
         this.point3 = point3;
     }
 
-    public int getId() {
-        return id;
+    public long getTriangleId() {
+        return triangleId;
     }
 
     public Point getPoint1() {
@@ -114,6 +106,6 @@ public class Triangle {
 
     @Override
     public String toString() {
-        return "Triangle. Id: " + id + ". Points: " + point1 + " " + point2 + " " + point3;
+        return "Triangle. Id: " + triangleId + ". Points: " + point1 + " " + point2 + " " + point3;
     }
 }
