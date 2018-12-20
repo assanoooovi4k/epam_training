@@ -37,70 +37,70 @@ public class TriangleCalculatorTest {
 
 
     @Test
-    public void testCalculatePerimeter() {
+    public void testCalculatePerimeterShouldBeOk() {
         double expected = 12.51;
         double actual = TriangleCalculator.calculatePerimeter(triangle);
         assertEquals(actual, expected, 0.01);
     }
 
     @Test
-    public void testCalculateArea() {
+    public void testCalculateAreaShouldBeOk() {
         double expected = 3;
         double actual = TriangleCalculator.calculateArea(triangle);
         assertEquals(actual, expected, 0.01);
     }
 
     @Test
-    public void testIsRectangular1() {
+    public void testIsRectangularShouldBeFalse() {
         boolean actual = TriangleCalculator.isRectangular(triangle);
         assertFalse(actual);
     }
 
     @Test
-    public void testIsRectangular2() {
+    public void testIsRectangularShouldBeTrue() {
         boolean actual = TriangleCalculator.isRectangular(rectTriangle);
         assertTrue(actual);
     }
 
     @Test
-    public void testIsIsosceles1() {
+    public void testIsIsoscelesShouldBeFalse() {
         boolean actual = TriangleCalculator.isIsosceles(triangle);
         assertFalse(actual);
     }
 
     @Test
-    public void testIsIsosceles2() {
+    public void testIsIsoscelesShouldBeTrue() {
         boolean actual = TriangleCalculator.isIsosceles(rectTriangle);
         assertTrue(actual);
     }
 
     @Test
-    public void testIsEquilateral1() {
+    public void testIsEquilateralShouldBeFalse() {
         boolean actual = TriangleCalculator.isEquilateral(triangle);
         assertFalse(actual);
     }
 
     @Test
-    public void testIsEquilateral2() {
+    public void testIsEquilateralShouldBeTrue() {
         boolean actual = TriangleCalculator.isEquilateral(equilTriangle);
         assertTrue(actual);
     }
 
 
     @Test
-    public void testIsAcuteAngle1() {
+    public void testIsAcuteAngleShouldBeTrue() {
         boolean actual = TriangleCalculator.isAcuteAngle(equilTriangle);
         assertTrue(actual);
     }
 
     @Test
-    public void testIsAcuteAngle2() {
+    public void testIsAcuteAngleShouldBeFalse() {
         boolean actual = TriangleCalculator.isAcuteAngle(triangle);
         assertFalse(actual);
     }
 
     @Test
-    public void testIsObtuse() {
+    public void testIsObtuseShouldBeTrue() {
         boolean actual = TriangleCalculator.isObtuse(triangle);
         assertTrue(actual);
     }

@@ -19,7 +19,7 @@ public class IdGenerator {
         return id;
     }
 
-    public static void setId(long newId) {
+    public static void setupNewId(long newId) {
         id = newId;
     }
 }

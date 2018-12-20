@@ -51,7 +51,7 @@ public class Point {
         if (this == point) return true;
         if (point == null) return false;
 
-        return  (Double.compare(point.getX(), getX()) == 0 &&
+        return (Double.compare(point.getX(), getX()) == 0 &&
                 Double.compare(point.getY(), getY()) == 0);
     }
 
@@ -62,16 +62,23 @@ public class Point {
         if (obj == null || obj.getClass() != this.getClass()) return false;
 
         Point point = (Point) obj;
-        return getPointId() == point.getPointId() &&
-                Double.compare(point.getX(), getX()) == 0 &&
-                Double.compare(point.getY(), getY()) == 0;
+
+        if (getPointId() != point.getPointId()) return false;
+        if (Double.compare(point.getX(), getX()) != 0) return false;
+        return Double.compare(point.getY(), getY()) == 0;
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (int) getX();
-        result = 31 * result + (int) getY();
+        int result;
+        long temp;
+
+        result = (int) (getPointId() ^ (getPointId() >>> 32));
+        temp = Double.doubleToLongBits(getX());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(getY());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+
         return result;
     }
 

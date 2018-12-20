@@ -18,8 +18,7 @@ public class DataParser {
             else {
                 try {
                     throw new DataFormatException("This line is incorrect: " + pointLine);
-                }
-                catch (DataFormatException e) {
+                } catch (DataFormatException e) {
                     e.printStackTrace();
                 }
             }

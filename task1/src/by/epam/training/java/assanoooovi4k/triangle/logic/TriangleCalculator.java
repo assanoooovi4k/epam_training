@@ -4,6 +4,10 @@ import by.epam.training.java.assanoooovi4k.triangle.entity.Point;
 import by.epam.training.java.assanoooovi4k.triangle.entity.Triangle;
 
 public class TriangleCalculator {
+    private TriangleCalculator() {
+
+    }
+
     public static double calculatePerimeter(Triangle triangle) {
         double[] abc = calculateAllSidesLength(triangle);
 
@@ -36,7 +40,7 @@ public class TriangleCalculator {
     public static boolean isEquilateral(Triangle triangle) {
         double[] abc = calculateAllSidesLength(triangle);
 
-        return Math.round(abc[0]) == Math.round(abc[1]) && Math.round(abc[0]) == Math.round(abc[2]);
+        return (abc[0] == abc[1]) && (abc[0] == abc[2]);
     }
 
     public static boolean isAcuteAngle(Triangle triangle) {
@@ -58,7 +62,6 @@ public class TriangleCalculator {
                 || (abc[0] * abc[0] + abc[2] * abc[2] < abc[1] * abc[1])
                 || (abc[2] * abc[2] + abc[1] * abc[1] < abc[0] * abc[0]);
     }
-
 
     private static double calculateSideLength(Point point1, Point point2) {
         double x1 = point1.getX();

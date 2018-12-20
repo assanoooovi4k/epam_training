@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TriangleCreator {
     public List<Triangle> createTriangles(List<String> parsedListOfTriangles) {
-        List<Triangle> triangles= new ArrayList<>();
+        List<Triangle> triangles = new ArrayList<>();
 
         for (String string : parsedListOfTriangles) {
             triangles.add(createTriangle(string));

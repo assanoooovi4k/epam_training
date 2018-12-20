@@ -1,12 +1,13 @@
 package by.epam.training.java.assanoooovi4k.triangle.validator;
 
 import by.epam.training.java.assanoooovi4k.triangle.parser.StringParser;
+
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class DataValidator {
     private static final String REGEX_DOUBLE = "^[+-]?(\\d*\\.)?\\d+$";
-    private  static final int NUMBER_OF_ARGS = 6;
+    private static final int NUMBER_OF_ARGS = 6;
 
     public boolean isValidTriangleData(String lineOfValues) {
         boolean result = true;
@@ -18,8 +19,7 @@ public class DataValidator {
                     result = false;
                 }
             }
-        }
-        else {
+        } else {
             result = false;
         }
 
