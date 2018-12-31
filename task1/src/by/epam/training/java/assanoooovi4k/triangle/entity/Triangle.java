@@ -2,9 +2,22 @@ package by.epam.training.java.assanoooovi4k.triangle.entity;
 
 import by.epam.training.java.assanoooovi4k.triangle.exception.DataFormatException;
 import by.epam.training.java.assanoooovi4k.triangle.generator.IdGenerator;
+import by.epam.training.java.assanoooovi4k.triangle.observer.Observable;
+import by.epam.training.java.assanoooovi4k.triangle.observer.Observer;
+import by.epam.training.java.assanoooovi4k.triangle.parser.DataParser;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
-public class Triangle {
+import java.util.LinkedList;
+import java.util.List;
+
+public class Triangle implements Observable {
+    private static Logger logger = LogManager.getLogger(Triangle.class);
+
     private long triangleId;
+
+    private List<Observer> observers;
 
     private Point point1;
     private Point point2;
@@ -12,36 +25,33 @@ public class Triangle {
 
     public Triangle() {
         this.triangleId = IdGenerator.generateId();
+        observers = new LinkedList<>();
     }
 
     public Triangle(Point point1, Point point2, Point point3) {
         if (isPointsOnLine(point1, point2, point3)) {
-            try {
-                throw new DataFormatException("Check your input data " + point1 + " " + point2 + " " + point3);
-            } catch (DataFormatException e) {
-                e.printStackTrace();
-            }
+            logger.log(Level.ERROR, "Check your input data: " + point1 + " " + point2 + " " + point3);
 
             this.triangleId = IdGenerator.generateId();
+            observers = new LinkedList<>();
         } else {
             this.triangleId = IdGenerator.generateId();
             this.point1 = point1;
             this.point2 = point2;
             this.point3 = point3;
+            observers = new LinkedList<>();
         }
     }
 
     public void setTriangle(Point point1, Point point2, Point point3) {
         if (isPointsOnLine(point1, point2, point3)) {
-            try {
-                throw new DataFormatException("Check your input data " + point1 + " " + point2 + " " + point3);
-            } catch (DataFormatException e) {
-                e.printStackTrace();
-            }
+            logger.log(Level.ERROR, "Check your input data: " + point1 + " " + point2 + " " + point3);
+
         } else {
             this.point1 = point1;
             this.point2 = point2;
             this.point3 = point3;
+            notifyObservers();
         }
     }
 
@@ -51,6 +61,7 @@ public class Triangle {
 
     public void setTriangleId(long triangleId) {
         this.triangleId = triangleId;
+        notifyObservers();
     }
 
     public Point getPoint1() {
@@ -59,13 +70,10 @@ public class Triangle {
 
     public void setPoint1(Point point1) {
         if (isPointsOnLine(point1, this.point2, this.point3)) {
-            try {
-                throw new DataFormatException("Check your input data " + point1);
-            } catch (DataFormatException e) {
-                e.printStackTrace();
-            }
+            logger.log(Level.ERROR, "Check your input data: " + point1);
         } else {
             this.point1 = point1;
+            notifyObservers();
         }
     }
 
@@ -75,13 +83,10 @@ public class Triangle {
 
     public void setPoint2(Point point2) {
         if (isPointsOnLine(this.point1, point2, this.point3)) {
-            try {
-                throw new DataFormatException("Check your input data " + point2);
-            } catch (DataFormatException e) {
-                e.printStackTrace();
-            }
+            logger.log(Level.ERROR, "Check your input data: " + point2);
         } else {
             this.point2 = point2;
+            notifyObservers();
         }
     }
 
@@ -91,13 +96,10 @@ public class Triangle {
 
     public void setPoint3(Point point3) {
         if (isPointsOnLine(this.point1, this.point2, point3)) {
-            try {
-                throw new DataFormatException("Check your input data " + point3);
-            } catch (DataFormatException e) {
-                e.printStackTrace();
-            }
+            logger.log(Level.ERROR, "Check your input data: " + point3);
         } else {
             this.point3 = point3;
+            notifyObservers();
         }
     }
 
@@ -116,6 +118,25 @@ public class Triangle {
                 getPoint3().equalsPoints(triangle.getPoint3());
     }
 
+    @Override
+    public void registerObserver(Observer o) {
+        if (o != null) {
+            observers.add(o);
+        }
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        if (o != null) {
+            observers.remove(o);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers)
+            observer.update(this);
+    }
 
     @Override
     public boolean equals(Object obj) {

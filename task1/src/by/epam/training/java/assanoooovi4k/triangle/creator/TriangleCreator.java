@@ -7,6 +7,7 @@ import by.epam.training.java.assanoooovi4k.triangle.parser.StringParser;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class TriangleCreator {
     public List<Triangle> createTriangles(List<String> parsedListOfTriangles) {
         List<Triangle> triangles = new ArrayList<>();
