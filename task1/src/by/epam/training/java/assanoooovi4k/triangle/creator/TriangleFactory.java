@@ -19,8 +19,8 @@ public class TriangleFactory {
                 .collect(Collectors.toList());
     }
 
-    private static Optional<Triangle> createTriangle(Point point1, Point point2, Point point3) {
+    public static Optional<Triangle> createTriangle(Point point1, Point point2, Point point3) {
         Triangle triangle = new Triangle(point1, point2, point3);
-        return Optional.of(triangle);
+        return Optional.ofNullable(triangle);
     }
 }

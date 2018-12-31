@@ -18,7 +18,7 @@ public class RepositoryTrianglesSaver {
         }
     }
 
-    private static void saveTriangle(Triangle triangle) {
+    public static void saveTriangle(Triangle triangle) {
         Repository repository = TriangleRepository.getInstance();
         repository.add(triangle);
 
