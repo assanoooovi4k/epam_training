@@ -1,6 +1,6 @@
 package by.epam.java.training.assanoooovi4k.xml.entity;
 
-public enum PaperType {
+public enum PaperEnum {
     JOURNAL("journal"), NEWSPAPER("newspaper"), BOOKLET("booklet"),
     ID("id"),
     TITLE("title"),
@@ -16,12 +16,21 @@ public enum PaperType {
 
     private String value;
 
-    PaperType(String value) {
+    PaperEnum(String value) {
         this.value = value;
     }
 
 
     public String getValue() {
         return value;
+    }
+
+    public static PaperEnum findByValue(String value){
+        for(PaperEnum paper : values()){
+            if(paper.getValue().equalsIgnoreCase(value)){
+                return paper;
+            }
+        }
+        return null;
     }
 }

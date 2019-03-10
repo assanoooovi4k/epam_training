@@ -20,4 +20,13 @@ public enum JournalType {
     public String getValue() {
         return value;
     }
+
+    public static JournalType findByValue(String value){
+        for(JournalType journalType : values()){
+            if(journalType.getValue().equalsIgnoreCase(value)){
+                return journalType;
+            }
+        }
+        return null;
+    }
 }

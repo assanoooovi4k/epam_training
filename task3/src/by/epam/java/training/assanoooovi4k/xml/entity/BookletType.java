@@ -19,4 +19,13 @@ public enum BookletType {
     public String getValue() {
         return value;
     }
+
+    public static BookletType findByValue(String value){
+        for(BookletType bookletType : values()){
+            if(bookletType.getValue().equalsIgnoreCase(value)){
+                return bookletType;
+            }
+        }
+        return null;
+    }
 }

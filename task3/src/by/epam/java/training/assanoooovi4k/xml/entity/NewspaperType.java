@@ -18,4 +18,13 @@ public enum NewspaperType {
     public String getValue() {
         return value;
     }
+
+    public static NewspaperType findByValue(String value){
+        for(NewspaperType newspaperType : values()){
+            if(newspaperType.getValue().equalsIgnoreCase(value)){
+                return newspaperType;
+            }
+        }
+        return null;
+    }
 }

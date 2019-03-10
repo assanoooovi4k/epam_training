@@ -21,10 +21,10 @@
 
     <complexType name="Paper">
         <sequence>
-            <element name="monthly" type="tns:Monthly"/>
-            <element name="colored" type="tns:Colored"/>
-            <element name="volume" type="tns:Volume"/>
-            <element name="glossy" type="tns:Glossy"/>
+            <element name="monthly" type="boolean" default="false"/>
+            <element name="colored" type="boolean" default="false"/>
+            <element name="volume" type="positiveInteger"/>
+            <element name="glossy" type="boolean"/>
         </sequence>
         <attribute name="id" type="positiveInteger" use="required"/>
         <attribute name="title" type="tns:Title" use="optional" default="Title"/>
@@ -37,7 +37,6 @@
                     <element name="subscription-index" type="tns:Subscription-index"/>
                     <element name="newspaper-type" type="tns:Newspaper-type"/>
                 </sequence>
-
             </extension>
         </complexContent>
     </complexType>
@@ -70,32 +69,32 @@
         </restriction>
     </simpleType>
 
-    <simpleType name="Monthly">
-        <restriction base="string">
-            <enumeration value="true"/>
-            <enumeration value="false"/>
-        </restriction>
-    </simpleType>
+    <!--<simpleType name="Monthly">-->
+        <!--<restriction base="string">-->
+            <!--<enumeration value="true"/>-->
+            <!--<enumeration value="false"/>-->
+        <!--</restriction>-->
+    <!--</simpleType>-->
 
-    <simpleType name="Colored">
-        <restriction base="string">
-            <enumeration value="true"/>
-            <enumeration value="false"/>
-        </restriction>
-    </simpleType>
+    <!--<simpleType name="Colored">-->
+        <!--<restriction base="string">-->
+            <!--<enumeration value="true"/>-->
+            <!--<enumeration value="false"/>-->
+        <!--</restriction>-->
+    <!--</simpleType>-->
 
-    <simpleType name="Glossy">
-        <restriction base="string">
-            <enumeration value="true"/>
-            <enumeration value="false"/>
-        </restriction>
-    </simpleType>
+    <!--<simpleType name="Glossy">-->
+        <!--<restriction base="string">-->
+            <!--<enumeration value="true"/>-->
+            <!--<enumeration value="false"/>-->
+        <!--</restriction>-->
+    <!--</simpleType>-->
 
-    <simpleType name="Volume">
-        <restriction base="string">
-            <pattern value="([1-9])|([1-9][0-9]+)"/>
-        </restriction>
-    </simpleType>
+    <!--<simpleType name="Volume">-->
+        <!--<restriction base="string">-->
+            <!--<pattern value="([1-9])|([1-9][0-9]+)"/>-->
+        <!--</restriction>-->
+    <!--</simpleType>-->
 
     <simpleType name="Subscription-index">
         <restriction base="string">

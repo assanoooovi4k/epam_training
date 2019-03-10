@@ -1,8 +1,15 @@
 package by.epam.java.training.assanoooovi4k.xml.entity;
 
+import by.epam.java.training.assanoooovi4k.xml.exception.MethodNotSupportedException;
+
+import java.util.Objects;
+
 public class Booklet extends Paper{
     private String nameOfCompany;
     private BookletType bookletType;
+
+    public Booklet() {
+    }
 
     public String getNameOfCompany() {
         return nameOfCompany;
@@ -16,12 +23,60 @@ public class Booklet extends Paper{
         return bookletType;
     }
 
-    public void setBookletType(BookletType bookletType) {
+
+    @Override
+    public void setBookletType(BookletType bookletType) throws MethodNotSupportedException {
         this.bookletType = bookletType;
     }
 
-    public void setBookletTypeValue(String value) {
-        this.bookletType.setValue(value);
+    @Override
+    public int getSubscriptionIndex() throws MethodNotSupportedException {
+        throw new MethodNotSupportedException("Not supported");
+    }
+
+    @Override
+    public void setSubscriptionIndex(int subscriptionIndex) throws MethodNotSupportedException {
+        throw new MethodNotSupportedException("Not supported");
+    }
+
+    @Override
+    public NewspaperType getNewspaperType() throws MethodNotSupportedException {
+        throw new MethodNotSupportedException("Not supported");
+    }
+
+    @Override
+    public void setNewspaperType(NewspaperType newspaperType) throws MethodNotSupportedException {
+        throw new MethodNotSupportedException();
+    }
+
+
+    @Override
+    public JournalType getJournalType() throws MethodNotSupportedException {
+        throw new MethodNotSupportedException("Not supported");
+    }
+
+    @Override
+    public void setJournalType(JournalType journalType) throws MethodNotSupportedException {
+        throw new MethodNotSupportedException();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || o.getClass() != this.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Booklet booklet = (Booklet) o;
+        return Objects.equals(getNameOfCompany(), booklet.getNameOfCompany()) &&
+                getBookletType() == booklet.getBookletType();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (getNameOfCompany() != null ? getNameOfCompany().hashCode() : 0);
+        result = 31 * result + (getBookletType() != null ? getBookletType().hashCode() : 0);
+        return result;
     }
 
     @Override
@@ -31,4 +86,5 @@ public class Booklet extends Paper{
                 ", bookletType=" + bookletType +
                 '}';
     }
+
 }

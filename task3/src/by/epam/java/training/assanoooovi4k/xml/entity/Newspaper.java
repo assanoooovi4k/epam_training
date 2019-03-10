@@ -1,8 +1,15 @@
 package by.epam.java.training.assanoooovi4k.xml.entity;
 
+import by.epam.java.training.assanoooovi4k.xml.exception.MethodNotSupportedException;
+
+import java.util.Objects;
+
 public class Newspaper extends Paper{
     private int subscriptionIndex;
     private NewspaperType newspaperType;
+
+    public Newspaper() {
+    }
 
     public int getSubscriptionIndex() {
         return subscriptionIndex;
@@ -20,8 +27,55 @@ public class Newspaper extends Paper{
         this.newspaperType = newspaperType;
     }
 
-    public void setNewspaperTypeValue(String value) {
-        this.newspaperType.setValue(value);
+
+    @Override
+    public JournalType getJournalType() throws MethodNotSupportedException {
+        throw new MethodNotSupportedException("Not supported");
+    }
+
+    @Override
+    public void setJournalType(JournalType journalType) throws MethodNotSupportedException {
+        throw new MethodNotSupportedException();
+    }
+
+
+    @Override
+    public String getNameOfCompany() throws MethodNotSupportedException {
+        throw new MethodNotSupportedException("Not supported");
+    }
+
+    @Override
+    public void setNameOfCompany(String nameOfCompany) throws MethodNotSupportedException {
+        throw new MethodNotSupportedException("Not supported");
+    }
+
+    @Override
+    public BookletType getBookletType() throws MethodNotSupportedException {
+        throw new MethodNotSupportedException("Not supported");
+    }
+
+    @Override
+    public void setBookletType(BookletType bookletType) throws MethodNotSupportedException {
+        throw new MethodNotSupportedException();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || o.getClass() != this.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Newspaper newspaper = (Newspaper) o;
+        return getSubscriptionIndex() == newspaper.getSubscriptionIndex() &&
+                getNewspaperType() == newspaper.getNewspaperType();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + getSubscriptionIndex();
+        result = 31 * result + (getNewspaperType() != null ? getNewspaperType().hashCode() : 0);
+        return result;
     }
 
     @Override
