@@ -25,6 +25,7 @@ public class StorageManager extends Thread {
             if (port.getStorage().get() < (Port.getInstance().getStorageCapacity() / 2)) {
                 port.setStorage((Port.getInstance().getStorageCapacity() / 5) * 4);
             }
+
             reentrantLock.unlock();
             reentrantLock.lock();
 
